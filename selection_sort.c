@@ -17,17 +17,18 @@ void main()
     for(i=0;i<10;i++)
     {
         spos=i;
-        printf("%d",i);
+        //printf("%d",i);
         for(j=i+1;j<10;j++)
         {
             if(a[spos]>a[j])
             {
                 spos=j;
-                temp=a[spos];
-                a[spos]=a[i];
-                a[i]=temp;
+                
                 //printf("%d",a[j]);
             }
+            temp=a[spos];
+            a[spos]=a[i];
+            a[i]=temp;
             //printf("\n %d",a[j]);
         }
         //printf("\n ");
