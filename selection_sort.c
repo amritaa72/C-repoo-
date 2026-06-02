@@ -1,44 +1,38 @@
-//selection sort
+// Selection Sort implementation
 #include <stdio.h>
 
-void main() 
+int main(void)
 {
     int a[10];
-    int i,j;
-    int spos;
-    int temp;
-    printf("Read the array elements\t");
-    for (i=0;i<10;i++)
-    {
-        scanf("%d",&a[i]);
-    }
-    
-    //sorting array
-    for(i=0;i<10;i++)
-    {
-        spos=i;
-        //printf("%d",i);
-        for(j=i+1;j<10;j++)
-        {
-            if(a[spos]>a[j])
-            {
-                spos=j;
-                
-                //printf("%d",a[j]);
-            }
-            temp=a[spos];
-            a[spos]=a[i];
-            a[i]=temp;
-            //printf("\n %d",a[j]);
+    int i, j, minIdx, temp;
+    printf("Read the array elements (10 integers)\t\n");
+    for (i = 0; i < 10; i++) {
+        if (scanf("%d", &a[i]) != 1) {
+            printf("Invalid input.\n");
+            return 1;
         }
-        //printf("\n ");
-    
-    }
-    
-    printf("THE SORTED ARRAY ELEMENTS ARE: \t");
-    for (i=0;i<10;i++)
-    {
-        printf(" %d",a[i]);
     }
 
+    // Selection sort: find the minimum element in the unsorted part and swap once
+    for (i = 0; i < 9; i++) { // last element will already be in place
+        minIdx = i;
+        for (j = i + 1; j < 10; j++) {
+            if (a[j] < a[minIdx]) {
+                minIdx = j;
+            }
+        }
+        // swap only if a smaller element was found
+        if (minIdx != i) {
+            temp = a[i];
+            a[i] = a[minIdx];
+            a[minIdx] = temp;
+        }
+    }
+
+    printf("THE SORTED ARRAY ELEMENTS ARE:\t");
+    for (i = 0; i < 10; i++) {
+        printf(" %d", a[i]);
+    }
+    printf("\n");
+    return 0;
 }
